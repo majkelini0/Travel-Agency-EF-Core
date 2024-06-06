@@ -1,0 +1,6 @@
+@TravelAgency_EFCore_HostAddress = http://localhost:5135
+
+GET {{TravelAgency_EFCore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,49 @@
+[NuGet]
+Microsoft.EntityFrameworkCore
+Core.Design
+Core.SqlServer
+System.Data.SqlClient
+
+[DOCKER PULL COMMAND]
+docker pull mcr.microsoft.com/mssql/server
+
+[DOCKER RUN COMMAND]
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=M@jkelini0" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+
+
+[RIDER CONSOLE]
+(UWAGA - zmienic folder na folder obecnego projektu !)
+dotnet new tool-manifest
+
+dotnet tool install dotnet-ef --version 8.0.0
+
+
+dotnet ef dbcontext scaffold "Data Source=localhost, 1433; User=SA; Password=M@jkelini0; Initial Catalog=apbd; Integrated Security=False;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Context
+
+[PJATK VPN CONNECTION STRING]
+"ConnectionStrings": {
+    "Default": "Data Source=db-mssql.pjwstk.edu.pl;Initial Catalog=2019SBD;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
+  }
+
+"ConnectionStrings": {
+    "Default": "Data Source=db-mssql.pjwstk.edu.pl;Initial Catalog=2019SBD;Integrated Security=True;"
+  }
+
+dotnet ef dbcontext scaffold "Data Source=db-mssql.pjwstk.edu.pl;Initial Catalog=2019SBD;Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Context
+
+dotnet ef dbcontext scaffold "Data Source=db-mssql.pjwstk.edu.pl;Initial Catalog=2019SBD;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Context
+
+
+dotnet ef dbcontext scaffold "Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Context
+
+dotnet ef dbcontext scaffold "Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Context
+
+
+runas /netonly /user:pjwstk.edu.pl\s27799@pjwstk.edu.pl ”C:\Program Files\JetBrains\JetBrains Rider 2023.3.3\bin\rider64.exe”
+
+
+[DOCKER]
+https://www.docker.com/products/docker-desktop/
+
+[Microsoft SQL Server - Ubuntu based images]
+https://hub.docker.com/_/microsoft-mssql-server
