@@ -46,3 +46,9 @@ VALUES
   (3, 2, '2023-03-24', '2023-02-26'),
   (4, 2, '2023-03-24', '2023-02-26'),
   (5, 2, '2023-03-24', '2023-02-26');
+  
+ select * from client;
+ select * from country;
+ select * from trip;
+ select * from country_trip;
+ select * from client_trip;

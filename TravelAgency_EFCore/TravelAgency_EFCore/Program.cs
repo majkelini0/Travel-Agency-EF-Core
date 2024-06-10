@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using TravelAgency_EFCore.Context;
+using TravelAgency_EFCore.Repositories;
+using TravelAgency_EFCore.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,10 +10,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<ITripRepository, TripRepository>();
+builder.Services.AddScoped<ITripService, TripService>();
+
 builder.Services.AddControllers();
-// controllers
+builder.Services.AddDbContext<ApbdEfcContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+
 
 var app = builder.Build();
+app.MapControllers();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -19,9 +30,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-app.MapControllers();
-
 app.UseHttpsRedirection();
-
 
 app.Run();
