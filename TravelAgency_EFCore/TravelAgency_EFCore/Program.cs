@@ -13,6 +13,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<ITripService, TripService>();
 
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IClientService, ClientService>();
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApbdEfcContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));

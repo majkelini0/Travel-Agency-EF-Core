@@ -59,7 +59,7 @@ public class TripService : ITripService
         return response;
     }
 
-    public static int CheckPageNum(int pageNum)
+    private static int CheckPageNum(int pageNum)
     {
         if (pageNum < 1)
         {
@@ -68,7 +68,7 @@ public class TripService : ITripService
         return pageNum;
     }
     
-    public static int CheckPageSize(int pageSize)
+    private static int CheckPageSize(int pageSize)
     {
         if (pageSize < 1)
         {

@@ -6,11 +6,11 @@ namespace TravelAgency_EFCore.Controller;
 
 [ApiController]
 [Route("api")]
-public class TripsController : ControllerBase
+public class TripController : ControllerBase
 {
     private readonly ITripService _tripService;
     
-    public TripsController(ITripService tripService)
+    public TripController(ITripService tripService)
     {
         _tripService = tripService;
     }
