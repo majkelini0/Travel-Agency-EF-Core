@@ -29,7 +29,8 @@ VALUES
 INSERT INTO Trip (Name,Description,DateFrom,DateTo,MaxPeople)
 VALUES 
   ('ABC', 'Lorem ipsum...', '2023-04-01', '2023-04-10', 2),
-  ('DEF', 'Lorem...', '2023-03-01', '2023-02-10', 4);
+  ('DEF', 'Lorem...', '2023-03-01', '2023-02-10', 4),
+ ('GHI', 'Lorissimo', '2025-01-01', '2025-01-15', 1);
   
 INSERT INTO Country_Trip (IdCountry, IdTrip)
 VALUES
@@ -52,3 +53,5 @@ VALUES
  select * from trip;
  select * from country_trip;
  select * from client_trip;
+ 
+delete from client_trip where IdClient = 9;
