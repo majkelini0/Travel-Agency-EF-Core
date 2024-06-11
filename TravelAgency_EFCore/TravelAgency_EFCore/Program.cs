@@ -16,6 +16,9 @@ builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IClientService, ClientService>();
 
+builder.Services.AddScoped<IClientTripRepository, ClientTripRepository>();
+builder.Services.AddScoped<IClientTripService, ClientTripService>();
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApbdEfcContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
